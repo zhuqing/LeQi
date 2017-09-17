@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache name="hipCache">
+    <defaultCache
+        maxEntriesLocalHeap="3000"
+        maxEntriesLocalDisk="10000"
+        eternal="true">
+    </defaultCache>
+    <diskStore path="user.dir/cache"/>
+    <cache name="dict"
+           maxEntriesLocalHeap="10000"
+           maxEntriesLocalDisk="0"
+           eternal="true"
+           memoryStoreEvictionPolicy="LRU"
+           diskPersistent="true"
+           clearOnFlush="true"
+           overflowToDisk="true"
+    />
+    <cache name="LOGIN"
+           maxEntriesLocalHeap="10000"
+           maxEntriesLocalDisk="0"
+           eternal="true"
+           memoryStoreEvictionPolicy="LRU"
+           diskPersistent="true"
+           clearOnFlush="true"
+           overflowToDisk="true"
+    />
+    <cache name="RegOrg"
+           maxEntriesLocalHeap="10000"
+           maxEntriesLocalDisk="0"
+           eternal="true"
+           memoryStoreEvictionPolicy="LRU"
+           diskPersistent="false"
+           clearOnFlush="false"
+           overflowToDisk="false"
+    />
+    <cache name="RegLocale"
+           maxEntriesLocalHeap="10000"
+           maxEntriesLocalDisk="0"
+           eternal="true"
+           memoryStoreEvictionPolicy="LRU"
+           diskPersistent="false"
+           clearOnFlush="false"
+           overflowToDisk="false"
+    />
+  
+</ehcache>

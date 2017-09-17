@@ -9,34 +9,41 @@
 // Note however, that you may define your own "run" and "debug" task if you
 // prefer. In this case NetBeans will not add these tasks but you may rely on
 // your own implementation.
-if (!hasProperty('mainClass')) {
-    ext.mainClass = ''
+
+String mavenGroupId = 'LeQi_Util'
+String mavenArtifactId = name
+String mavenVersion = '1.0.3-SNAPSHOT'
+version = mavenVersion
+group = mavenGroupId
+
+configurations { providedCompile }
+
+sourceSets {
+    main {
+        compileClasspath += configurations.providedCompile
+    }
+    test {
+        compileClasspath += configurations.providedCompile
+        runtimeClasspath += configurations.providedCompile
+    }
 }
 
+
+
 dependencies {
-    compile group: 'io.reactivex', name: 'rxjavafx', version: '2.0.2'
+    
+    // https://mvnrepository.com/artifact/dom4j/dom4j
+    // https://mvnrepository.com/artifact/commons-net/commons-net
+    compile group: 'commons-net', name: 'commons-net', version: '3.6'
+    // https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils
+    compile group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.3'
+    // https://mvnrepository.com/artifact/org.apache.poi/poi
     compile group: 'org.apache.poi', name: 'poi', version: '3.9'
     compile group: 'org.apache.poi', name: 'poi-excelant', version: '3.9'
     compile group: 'org.apache.poi', name: 'poi-ooxml-schemas', version: '3.9'
     compile group: 'org.apache.poi', name: 'poi-ooxml', version: '3.9'
     compile group: 'org.apache.poi', name: 'poi-scratchpad', version: '3.9'
-    
-    
-    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.7'
-    compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.7'
-
-compile group: 'commons-beanutils', name: 'commons-beanutils', version: '1.8.3'
-     compile group: 'commons-io', name: 'commons-io', version: '2.4'
-    compile group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.3'
-    compile group: 'commons-codec', name: 'commons-codec', version: '1.9'
-    compile group: 'commons-net', name: 'commons-net', version: '3.5'
-    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.2'
-    compile group: 'com.thoughtworks.xstream', name: 'xstream', version: '1.4.9.redhat-2'
-    // TODO: Add dependencies here compile group: '', name: '', version: ''
-    //   but note that JUnit should have already been added in parent.gradle.
-    //   By default, only the Maven Central Repository is specified in
-    //   parent.gradle.
-    //
-    // You can read more about how to add dependency here:
-    //   http://www.gradle.org/docs/current/userguide/dependency_management.html#sec:how_to_declare_your_dependencies
+    compile group: 'dom4j', name: 'dom4j', version: '1.6.1'
+    compile group: 'com.belerweb', name: 'pinyin4j', version: '2.5.1'
+    providedCompile files("${System.env['JAVA_HOME']}/jre/lib/ext/jfxrt.jar")
 }

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import com.bjgoodwill.hip.client.fx.control.table.*?>
+<?import com.bjgoodwill.hip.client.fx.control.table.cell.*?>
+<?import com.bjgoodwill.hip.client.fx.control.form.*?>
+<?import com.bjgoodwill.hip.client.fx.control.form.cell.text.*?>
+<?import com.bjgoodwill.hip.client.fx.control.form.cell.choose.customdatasource.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"  >
+    <top>
+        <StackPane fx:id="showEditFormView">
+            <Label text="显示条件输入"/> 
+        </StackPane>
+    </top>
+    <center>
+        <BorderPane >
+            <left>
+                <StackPane >
+                    <HipTableView fx:id="paramsTableList" >
+                        <columns>
+                            <HipTableColumn text="属性列表"   propertyName="name">
+                                <tableCell>
+                                    <HipTableTextCell />
+                                </tableCell>
+                            </HipTableColumn>
+                        </columns>
+                    </HipTableView>
+                </StackPane>
+            </left>
+            <center>
+                <HBox >
+                
+                    <HipFormView fx:id="parameterFormView" prefWidth="400"  HBox.hgrow="ALWAYS" >
+                        <children>
+                            <Label text="标题" GridPane.rowIndex="0" GridPane.columnIndex="0"/> 
+                            <HipTextInputFormCell propertyName="name" GridPane.rowIndex="0" GridPane.columnIndex="1"></HipTextInputFormCell>
+                            <Label text="数据类型" GridPane.rowIndex="1" GridPane.columnIndex="0"/> 
+                            <HipCustomDataSourceFilterableComboBoxFormCell fx:id="dataType" propertyName="formCell" GridPane.rowIndex="1" GridPane.columnIndex="1">
+                                <customDataSourceCallback>
+                                    <com.bjgoodwill.hip.client.app.report.callback.HipFormCellListCallback />
+                                </customDataSourceCallback>
+                            </HipCustomDataSourceFilterableComboBoxFormCell>
+<!--                            <Label text="数据格式" GridPane.rowIndex="2" GridPane.columnIndex="0"/> 
+                            <HipTextInputFormCell propertyName="dataFormat" GridPane.rowIndex="2" GridPane.columnIndex="1"></HipTextInputFormCell>-->
+                            <Button fx:id="parameterFormViewSubimt" text="保存" GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.columnSpan="2" /> 
+                                                 
+                        </children>
+                    </HipFormView>
+                 
+                    <TextArea fx:id="sqlTextArea" promptText="数据源查询语句,例如：
+select t.input_py      as INPUT_PY,
+       t.mnemonic_code as MNEMONIC_CODE,
+       t.element_name  as DISPLAY,
+       t.id            as DATA_VALUE
+  from DICT_ELEMENT t
+ where t.dict_id = 772
+"  />
+             
+                </HBox>
+            </center>
+        </BorderPane>
+    </center>
+</BorderPane>

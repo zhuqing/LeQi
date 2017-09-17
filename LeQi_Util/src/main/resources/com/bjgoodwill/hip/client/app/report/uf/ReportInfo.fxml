@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.bjgoodwill.hip.client.fx.control.button.*?>
+<?import javafx.scene.control.SplitPane?>
+<?import com.bjgoodwill.hip.client.fx.control.table.cell.*?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TreeView?>
+<?import com.bjgoodwill.hip.client.fx.control.form.cell.choose.ets.*?>
+<?import java.util.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import com.bjgoodwill.hip.client.fx.control.form.cell.text.*?>
+<?import com.bjgoodwill.hip.client.fx.control.form.*?>
+<?import com.bjgoodwill.hip.client.fx.control.table.*?>
+<BorderPane  xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+    <top>
+        <VBox>
+            <HBox>
+                <HipButton text="修改报表名称" onAction="#updateReportConfig" />
+            </HBox>
+            <HipFormView fx:id="reportConfigFormView">
+                <children>
+                    <Label text="报表名称:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <HipTextInputFormCell propertyName="brtName" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                </children>
+            </HipFormView>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox>
+            <HBox>
+                <HipButton text="新增" onAction="#addRelation" />
+                <HipButton text="保存" onAction="#saveRelation"/>
+            </HBox>
+            <HipEditTableView fx:id="reportConfigNavigationTableView">
+                <hipFormView>
+                    <HipFormView >
+                        <HipEtsComboBoxFormCell dictCode="HipObject"   propertyName="navigationId" ></HipEtsComboBoxFormCell>
+                    </HipFormView>
+                </hipFormView>
+                
+                <columns>
+                    <HipTableColumn propertyName="navigationId" text="导航" >
+                        <tableCell>
+                            <HipEtsTableCell dictCode="HipObject" >
+                                
+                            </HipEtsTableCell> 
+                        </tableCell>
+                    </HipTableColumn>
+                    <HipTableColumn >
+                        <tableCell>
+                            <HipTableButtonCell>
+                                <buttonList>
+                                    <ArrayList>
+                                        <HipButton text="删除"  onAction="#deletRelation" /> 
+                                    </ArrayList>
+                                </buttonList>
+                            </HipTableButtonCell> 
+                        </tableCell>
+                    </HipTableColumn>
+                </columns>
+            </HipEditTableView>
+        </VBox>
+        
+        
+    </center>
+</BorderPane>
+

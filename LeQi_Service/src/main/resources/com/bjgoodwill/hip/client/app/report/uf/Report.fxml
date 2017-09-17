@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import com.bjgoodwill.hip.client.fx.control.tree.*?>
+<?import com.bjgoodwill.hip.client.fx.control.tree.cell.*?>
+<?import com.bjgoodwill.hip.client.fx.control.form.*?>
+<?import com.bjgoodwill.hip.client.fx.control.form.cell.text.*?>
+<BorderPane  xmlns:fx="http://javafx.com/fxml/1"  >
+    <top>
+        <HBox spacing="10"  >
+            <Button fx:id="loadLocalReport" text="导入本地报表"/> 
+            <Button fx:id="modifyReportConfigButton" text="修改报表"/> 
+        </HBox>
+      
+    </top>
+    <left>
+        <HipFilterableTreeViewPane >
+            <hipTreeView>
+                <HipTreeView fx:id="treeView">
+                    <hipTreeCell>
+                        <HipTreeCell propertyName="brtName"/>
+                    </hipTreeCell>
+                </HipTreeView>
+            </hipTreeView>
+       
+        </HipFilterableTreeViewPane>
+    </left>
+    <center>
+        <TabPane fx:id="tabPane" >
+            <tabs>
+                <Tab closable="false"  fx:id="reportInfoTab" text="信息"/> 
+                <Tab closable="false"  fx:id="reportEditTab" text="编辑"/> 
+                <Tab closable="false"  fx:id="reportViewTab" text="预览"/> 
+            </tabs>
+        </TabPane>
+    </center>
+</BorderPane>

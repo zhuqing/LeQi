@@ -1,0 +1,55 @@
+// Note: "common.gradle" in the root project contains additional initialization
+//   for this project. This initialization is applied in the "build.gradle"
+//   of the root project.
+
+// NetBeans will automatically add "run" and "debug" tasks relying on the
+// "mainClass" property. You may however define the property prior executing
+// tasks by passing a "-PmainClass=<QUALIFIED_CLASS_NAME>" argument.
+//
+// Note however, that you may define your own "run" and "debug" task if you
+// prefer. In this case NetBeans will not add these tasks but you may rely on
+// your own implementation.
+
+String mavenGroupId = 'HIP-RIM'
+String mavenArtifactId = name
+String mavenVersion = '1.0.3-SNAPSHOT'
+version = mavenVersion
+group = mavenGroupId
+
+configurations { providedCompile }
+
+sourceSets {
+    main {
+        compileClasspath += configurations.providedCompile
+    }
+    test {
+        compileClasspath += configurations.providedCompile
+        runtimeClasspath += configurations.providedCompile
+    }
+}
+
+if (!hasProperty('mainClass')) {
+    ext.mainClass = 'com.bjgoodwill.hip.client.app.HisApplication'
+}
+
+dependencies {
+    providedCompile files("${System.env['JAVA_HOME']}/jre/lib/ext/jfxrt.jar")
+}
+
+def libFolder = 'libs'
+def includePattern = 'lib/*.jar'
+def javaFxHome = "${System.properties['java.home']}";
+def antJavaFxJar = "$javaFxHome/../lib/ant-javafx.jar"
+ant.importBuild 'javafx.xml'
+ant.antJavaFxJar =antJavaFxJar
+ant.mainClassName = ext.mainClass
+ant.fallbackClassName = 'com.javafx.main.NoJavaFXFallback'
+ant.distDir = libsDir
+ant.distName = jar.archiveName;
+ant.resourceDir = libFolder
+ant.resourceIncludePattern = includePattern
+
+
+
+
+

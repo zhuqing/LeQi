@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.web.*?>
+<?import com.bjgoodwill.hip.client.fx.control.form.*?>
+<?import com.bjgoodwill.hip.client.fx.control.form.cell.number.*?>
+<BorderPane  xmlns:fx="http://javafx.com/fxml/1"  >
+    <top>
+        <BorderPane >
+            <top>
+                <HipFormView fx:id="loginData">
+                    <children>
+                        <Label text="用户id:"  GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <HipNumberFormCell propertyName="loginUserId" GridPane.rowIndex="0" GridPane.columnIndex="1"></HipNumberFormCell>
+                        <Label text="机构id:"  GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+                        <HipNumberFormCell propertyName="loginOrgId" GridPane.rowIndex="0" GridPane.columnIndex="4"></HipNumberFormCell>
+                        <Label text="医院id:"  GridPane.rowIndex="0" GridPane.columnIndex="5"/>
+                        <HipNumberFormCell propertyName="hospitalId" GridPane.rowIndex="0" GridPane.columnIndex="6"></HipNumberFormCell>
+                        <Label text="服务"  GridPane.rowIndex="0" GridPane.columnIndex="7"/>
+                        <HipNumberFormCell propertyName="loginServiceId" GridPane.rowIndex="0" GridPane.columnIndex="8"></HipNumberFormCell>
+                    </children>
+                </HipFormView>
+            </top>
+            <center>
+                <StackPane fx:id="queryPane">
+            
+                </StackPane>
+            </center>
+        </BorderPane>
+        
+    </top>
+    
+    <center>
+        <WebView fx:id="reportWebView">
+            
+        </WebView> 
+    </center>
+</BorderPane>

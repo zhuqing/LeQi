@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import com.bjgoodwill.hip.client.fx.control.form.*?>
+<?import com.bjgoodwill.hip.client.fx.control.form.cell.text.*?>
+
+<BorderPane  xmlns:fx="http://javafx.com/fxml/1">
+    <center>
+        <HipFormView fx:id="reportConfigFormView">
+            <Label text="名称" GridPane.rowIndex="0" GridPane.columnIndex="0"/> 
+            <HipTextInputFormCell propertyName="brtName" GridPane.rowIndex="0" GridPane.columnIndex="1"></HipTextInputFormCell>
+            <Label text="路径" GridPane.rowIndex="1" GridPane.columnIndex="0"/> 
+            <HipTextInputFormCell propertyName="brtPath" GridPane.rowIndex="1" GridPane.columnIndex="1"></HipTextInputFormCell>
+        </HipFormView>
+    </center>
+</BorderPane>
