@@ -10,7 +10,7 @@
 // prefer. In this case NetBeans will not add these tasks but you may rely on
 // your own implementation.
 
-String mavenGroupId = 'HIP-RIM'
+String mavenGroupId = 'LeQi_Service'
 String mavenArtifactId = name
 String mavenVersion = '1.0.3-SNAPSHOT'
 version = mavenVersion
@@ -28,26 +28,12 @@ sourceSets {
     }
 }
 
-if (!hasProperty('mainClass')) {
-    ext.mainClass = 'com.bjgoodwill.hip.client.app.HisApplication'
-}
+
 
 dependencies {
     providedCompile files("${System.env['JAVA_HOME']}/jre/lib/ext/jfxrt.jar")
 }
 
-def libFolder = 'libs'
-def includePattern = 'lib/*.jar'
-def javaFxHome = "${System.properties['java.home']}";
-def antJavaFxJar = "$javaFxHome/../lib/ant-javafx.jar"
-ant.importBuild 'javafx.xml'
-ant.antJavaFxJar =antJavaFxJar
-ant.mainClassName = ext.mainClass
-ant.fallbackClassName = 'com.javafx.main.NoJavaFXFallback'
-ant.distDir = libsDir
-ant.distName = jar.archiveName;
-ant.resourceDir = libFolder
-ant.resourceIncludePattern = includePattern
 
 
 
